@@ -33,11 +33,63 @@ result.innerHTML = Object.values(myCollection).map( (jeu, index) =>`
 `).join("");
 
 console.log(maPopup)
+// *******************************Là, je modifie mon titre h1*******************************
+// ************************Pour cela je dois créé une variable de mon titre et une pour le parent**************
+// **************************Puis une autre pour mon nouveau titre avant de le remplacer*************************************
+var titre = document.getElementById('gros_titre');
+var parent = document.body;
+
+var nouveauTitre = document.createElement('h1');
+nouveauTitre.id = 'beau_titre';
+nouveauTitre.innerHTML = 'Bienvenue à Mario et Luigi';
+
+parent.replaceChild(nouveauTitre, titre);
+// *********************************************************************************************************
+
+
+
+
+
+
 
 for (let index = 0; index < maPopup.length; index++) {
     const jeu = maPopup[index];
     console.log(jeu.getAttribute('id'));
+    var s = document.querySelector('.maPopup').addEventListener('click', ()=>{
+        maPopup.classList.toggle('active');
+        })
+        alert(s);
 }
+
+
+// ***********************Là, j'essaie de modifier les cartes de Mario*********************************
+var s = document.getElementsByTagName(jeu);
+s.addEventListener('click',fenetre);
+function fenetre() {
+    this.style.width = '300px';
+}
+
+//   s.addEventListener('click', ()=>{
+//     jeu.classList.toggle('active');
+//     })
+
+
+
+
+
+
+// let open = document.querySelector('#open')
+// open.addEventListener('click', ()=>{
+//     result.classList.add('active');
+// })
+
+
+// let close = document.querySelector('#cross')
+// close.addEventListener('click', ()=>{
+//     result.classList.remove('active');
+// })
+
+
 
 // if (let clk: ((this: Window, ev: MouseEvent) => any)) {
     

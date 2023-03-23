@@ -12,6 +12,7 @@ h1 {
     line-height: 40px;
 }
 
+
 .results {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -21,8 +22,8 @@ h1 {
 }
 
 .card {
-    width: 250px;
-    height: 250px;
+    width: 270px;
+    height: 270px;
     margin: 30px;
     padding: 10px;
     border: 15px solid rgb(0, 0, 0);
@@ -110,4 +111,11 @@ h1 {
     background-color: rgb(80, 230, 90);
     background-image: url('29024-6-mario-bros-photo-thumb.png');
     background-size: cover;
+}
+
+#result.active {
+    display: block;
+    width: 250px;
+    height: 250px;
+    background-color: brown;
 }
