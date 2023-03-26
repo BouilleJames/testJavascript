@@ -1,7 +1,9 @@
 // **************Les cartes MarioBros******************
 const result = document.querySelector('.results');
 const jeu = document.getElementsByClassName('card');
-const maPopup = document.getElementsByClassName('maPopup');
+const boutons = document.getElementsByClassName('boutons');
+const popupContainer = document.getElementById('popupContainer');
+
 
 function Jeux(name, console, year) {
     this.name = name;
@@ -28,11 +30,24 @@ result.innerHTML = Object.values(myCollection).map( (jeu, index) =>`
         <h2>Titre : ${jeu.name}</h2>
         <h3>Console : ${jeu.console}</h3>
         <h4>Année : ${jeu.year}</h4>
-        <button class="maPopup" id = ${"jeu" + (index+=1)}>en savoir plus</button>
+        <button class="boutons" id = ${"jeu" + (index+=1)}>en savoir plus</button>
     </div>
 `).join("");
 
-console.log(maPopup)
+console.log(boutons)
+
+// ****************************Popup****************************
+
+for (let index = 0; index < boutons.length; index++) {
+    const jeu = boutons[index];
+    console.log(jeu.getAttribute('id'));
+    jeu.addEventListener('click', ()=>{
+        console.log(jeu);
+        popupContainer.classList.toggle('active');
+        })
+}
+
+
 // *******************************Là, je modifie mon titre h1*******************************
 // ************************Pour cela je dois créé une variable de mon titre et une pour le parent**************
 // **************************Puis une autre pour mon nouveau titre avant de le remplacer*************************************
@@ -44,40 +59,87 @@ nouveauTitre.id = 'beau_titre';
 nouveauTitre.innerHTML = 'Bienvenue à Mario et Luigi';
 
 parent.replaceChild(nouveauTitre, titre);
-// *********************************************************************************************************
+
+
+// **Là, j'essaie de creer un carroussel pour afficher les cartes de Mario*******
+// **dans la popup precedement ouverte au click d'un bouton**
+
+
+// var contentPopup = document.createElement('h2');
+// contentPopup.id = 'titre_popup';
+// contentPopup.innerHTML = 'Voici les différents jeux Mario';
+// popupContainer.document.write("<p>Bonjour à toutes et tous/n Voici un descriptif du jeu</p>");
 
 
 
 
 
 
+// ******************************************************************************
 
-for (let index = 0; index < maPopup.length; index++) {
-    const jeu = maPopup[index];
-    console.log(jeu.getAttribute('id'));
-    var s = document.querySelector('.maPopup').addEventListener('click', ()=>{
-        maPopup.classList.toggle('active');
-        })
-        alert(s);
+// // Récupérez tous les éléments de la page qui doivent afficher une popup
+// var elements = document.querySelectorAll('.boutons');
+
+// // Parcourez chaque élément et ajoutez un événement de clic
+// elements.forEach(function(element) {
+//   element.addEventListener('click', function() {
+//     // Récupérez l'ID de la popup qui correspond à cet élément
+//     var popupId = this.dataset.popup;
+
+//     // Affichez la popup correspondante
+//     var popup = document.getElementById(popupId);
+//     popup.style.display = 'block';
+//   });
+// });
+
+// ***********************Carroussel***************************
+
+document.body.onload=function(){
+    nbr=10;
+    p=0;
+    container=document.getElementById("containerPhoto");
+    g=document.getElementById("g");
+    d=document.getElementById("d");
+    containerPhoto.style.width=(270*nbr)+"px";
+    for(i=1;i<=nbr;i++){
+        div=document.createElement("div");
+        div.className="card";
+        div.style.backgroundImage="url('image/mario"+i+".png')";
+        containerPhoto.appendChild(div);
+    }
+    afficherMasquer();
+}
+g.onclick=function() {
+    if(p>-nbr+1)
+        p--;
+    containerPhoto.style.transform="translate("+p*270+"px)";
+    containerPhoto.style.transition="all 0.5s ease";
+    afficherMasquer();
+}
+d.onclick=function() {
+    if(p<0)
+        p++;
+    containerPhoto.style.transform="translate("+p*270+"px)";
+    containerPhoto.style.transition="all 0.5s ease";
+    afficherMasquer();
+}
+function afficherMasquer(){
+    if(p==-nbr+1)
+        g.style.visibility="hidden";
+    else
+        g.style.visibility="visible";
+     if(p==0)
+        d.style.visibility="hidden";
+     else
+        d.style.visibility="visible";
 }
 
 
-// ***********************Là, j'essaie de modifier les cartes de Mario*********************************
-var s = document.getElementsByTagName(jeu);
-s.addEventListener('click',fenetre);
-function fenetre() {
-    this.style.width = '300px';
-}
-
-//   s.addEventListener('click', ()=>{
-//     jeu.classList.toggle('active');
-//     })
 
 
 
 
-
-
+// *******************************************************************************
 // let open = document.querySelector('#open')
 // open.addEventListener('click', ()=>{
 //     result.classList.add('active');
